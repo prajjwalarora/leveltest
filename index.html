@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <!-- <link type="text/css" href="https://www.yuriyarin.com/style.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/spinner.css">
+
+    <!-- <script defer src="leveltestfast.js"></script> -->
+
+</head>
+
+<body class="container-fluid px-0">
+    <div id="spinner-container" class="spinner-hide">
+        <img src="/img/Spin.svg" alt="spinner" id="spinner">
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+            <a class="navbar-brand" href="https://www.yuriyarin.com">Yuri Yarin</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+
+            <div class="collapse navbar-collapse" id="navbarColor03">
+
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="index.html">Home</a>
+
+                    </li>
+
+                    <li class="nav-item active">
+
+                        <a class="nav-link" href="Leveltest.html">Level Test<span class="sr-only">(current)</span></a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="https://www.standpointenglish.com">Standpoint English</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="https://bootswatch.com/superhero/">Style Source</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="contact.html">Contact Form</a>
+
+                    </li>
+
+                </ul>
+                <a id="register-btn" type="button"
+                    class=" text-white font-weight-regular btn btn-sm btn-warning sub-btn-head ml-2"
+                    style="font-size: 14px;" data-toggle="modal" data-target="#submission-modal">Register</a>
+                <a id="login-btn" type="button" class=" text-white ml-2" data-toggle="modal" data-target="#login-modal">
+                    | Login</a>
+                <a id="reset-btn" type="button" class="text-white  ml-1 my-0" data-toggle="modal"
+                    data-target="#passReset-modal">| Reset Password</a>
+
+            </div>
+
+        </nav>
+    </header>
+    <main>
+        <div id="header-div" class="jumbotron mb-0">
+
+            <h1 id="header-h1" class="display-3">Level Test</h1>
+
+            <p class="lead" id="testaker">Take this level test to find out your level of English</p>
+
+            <hr id="header-hr" class="my-4">
+
+            <div id="usefulinfo">
+
+                <p class="text-warning"><strong>Are you ready?</strong> This test will take 10-20 minutes to complete.
+                    You
+                    will not be able to save the result until you finish.</p>
+
+                <p class="text-info"></p><strong>Remember:</strong> This test provides a quick and effective diagnostic
+                of
+                your English language ability. It is not a complete test.</p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="modal fade" id="submission-modal">
+
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 id="modal-title" class="modal-title ">Registration Form</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                            <span aria-hidden="true">&times;</span>
+
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div id="submission-div" class="container">
+
+                            <form id="submissionForm">
+
+                                <div class="form-group">
+
+                                    <label for="username">Name</label>
+
+                                    <input type="text" class="form-control" id="usernameSubmi"
+                                        aria-describedby="emailHelp" placeholder="Your name" name="name" required>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="userphone">Email address</label>
+
+                                    <input type="email" class="form-control" id="useremailSubmi"
+                                        placeholder="Email address" name="email">
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="userlocation">Location</label>
+
+                                    <input type="text" class="form-control" id="userlocationSubmi"
+                                        placeholder="City, country" name="location">
+
+                                </div>
+                                <div class="form-group">
+
+                                    <label for="userPassword">Password</label>
+
+                                    <input type="password" class="form-control" id="userPasswordSubmi"
+                                        placeholder="Enter Your password" name="password">
+
+                                </div>
+                                <div class="form-group">
+
+                                    <label for="userPasswordConfirm">Confirm Password</label>
+
+                                    <input type="password" class="form-control" id="userPasswordConfirmSubmi"
+                                        placeholder="Enter Your password Again" name="passwordConfirm">
+
+                                </div>
+
+                                <!-- <div class="form-group">
+
+                                    <div class="custom-control custom-switch">
+
+                                        <input type="checkbox" class="custom-control-input" id="moredetails"
+                                            value="moredetails" checked="" name="details">
+
+                                        <label class="custom-control-label" for="moredetails">I would like more detailed
+                                            information about my test results</label>
+
+                                    </div>
+
+                                    <div class="custom-control custom-switch">
+
+                                        <input type="checkbox" class="custom-control-input" id="teachercontact"
+                                            value="teachercontact" checked="" name="details">
+
+                                        <label class="custom-control-label" for="teachercontact">I would like to review
+                                            the
+                                            result with a teacher</label>
+
+                                    </div>
+
+                                </div> -->
+
+                                <div class="form-group">
+
+                                    <label for="message">Message</label>
+
+                                    <textarea class="form-control" id="messageSubmi" name="message" rows="3"></textarea>
+
+                                </div>
+
+                                <p class="hide">Test Data Hidden</p><input class="hide" name="testdata"
+                                    value="Level_Test001">
+
+                                <div class="btn-group mr-2" role="group" aria-label="Second group">
+
+                                    <input class="btn btn-success mr-3" id="sub-btn-text" type="submit"
+                                        value="Register">
+
+                                    <input class="btn btn-secondary btn-sm btn-block" type="reset" value="Clear">
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary my-0 btn-sm" data-dismiss="modal">Close</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal fade" id="test-warning-modal">
+
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 id="modal-title" class="modal-title">Warning</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                            <span aria-hidden="true">&times;</span>
+
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div id="submission-div" class="container">
+
+                            <p>If you are not logged in, any data entered into this test is not stored. If you want to
+                                save your result, you may do so at the end.</p>
+
+                            <p class="hide">Test Data Hidden</p><input class="hide" name="testdata"
+                                value="Level_Test001">
+
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-warning btn-sm btn-block my-0"
+                                    data-dismiss="modal">Close</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="login-modal">
+
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 id="modal-title" class="modal-title">Login Form</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                            <span aria-hidden="true">&times;</span>
+
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div id="submission-div" class="container">
+
+                            <form id="loginForm">
+
+
+                                <div class="form-group">
+
+                                    <label for="useremail">Email address</label>
+
+                                    <input type="email" class="form-control" id="useremailLogin"
+                                        placeholder="Your email" name="email" required>
+
+                                    <small id="emailHelp" class="form-text text-muted"></small>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="password">Password</label>
+
+                                    <input type="password" class="form-control" id="passwordLogin"
+                                        aria-describedby="emailHelp" placeholder="Enter Your password" name="password"
+                                        required>
+
+                                </div>
+
+
+
+
+                                <p class="hide">Test Data Hidden</p><input class="hide" name="testdata"
+                                    value="Level_Test001">
+
+                                <div class="btn-group mr-2" role="group" aria-label="Second group">
+
+                                    <input class="btn btn-success mr-3" type="submit" value="Login">
+
+                                    <input class="btn btn-secondary btn-sm btn-block" type="reset" value="Clear">
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal fade" id="passReset-modal">
+
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 id="modal-title" class="modal-title">Password Reset Form</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                            <span aria-hidden="true">&times;</span>
+
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div id="reset-div" class="container">
+
+                            <form id="resetForm">
+
+
+                                <div class="form-group">
+
+                                    <label for="useremail">Email address</label>
+
+                                    <input type="email" class="form-control" id="userEmailReset"
+                                        placeholder="Your email" name="email" required>
+
+                                    <small id="emailHelp" class="form-text text-muted"></small>
+
+                                </div>
+                                <p class="hide">Test Data Hidden</p><input class="hide" name="testdata"
+                                    value="Level_Test001">
+
+                                <div class="btn-group mr-2" role="group" aria-label="Second group">
+
+                                    <input class="btn btn-success mr-3" type="submit" value="Reset Password">
+
+                                    <input class="btn btn-secondary btn-sm btn-block" type="reset" value="Clear">
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="registration-modal">
+
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 id="modal-title" class="modal-title">Registration Form</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                            <span aria-hidden="true">&times;</span>
+
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div id="submission-div" class="container">
+
+                            <form action="#" class="registration-form">
+
+
+                                <div class="form-group">
+
+                                    <label for="useremail">Email address</label>
+
+                                    <input type="email" class="form-control" id="useremailRegister"
+                                        placeholder="Your email" name="email" required>
+
+                                    <small id="emailHelp" class="form-text text-muted"></small>
+
+                                </div>
+
+                                <p class="hide">Test Data Hidden</p><input class="hide" name="testdata"
+                                    value="Level_Test001">
+
+                                <div class="btn-group mr-2" role="group" aria-label="Second group">
+
+                                    <input class="btn btn-success mr-3" type="submit" value="Register">
+                                    <!-- onclick="initiateTest()" -->
+
+                                    <input class="btn btn-secondary btn-sm btn-block" type="reset" value="Clear">
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div id="maintestcontainer" class="flexcontainer mycontainer row mx-0">
+
+            <div id="intro-container" class="flexcontainer col-12 justify-content-center">
+
+                <!-- <button id="start-btn" type="button" class="btn btn-primary btn-lg btn-block col-2" data-toggle="modal"
+                    data-target="#registration-modal">Start Level Test</button> -->
+                <button id="start-btn-direct" type="button"
+                    class="btn btn-primary btn-lg btn-block col-md-2 col-12 ml-2 mt-0 mb-1">Start Level Test</button>
+                <button id="progress-btn" type="button" value="See Previous result"
+                    class="btn btn-warning btn-lg btn-block col-md-2 col-12 ml-2 mb-1 mt-0 d-none">See Previous
+                    Result</button>
+
+            </div>
+
+            <div id="column1" class="hide col-md-6 p-0 pr-2">
+
+                <div class="mycard bg-secondary">
+
+                    <div id="question-header" class="card-header">Question:</div>
+
+                    <div id="question-container" class="card-body card-text mycontainer-secondary">
+
+                        Oops something went wrong!
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="column2" class="hide col-md-6 p-0">
+
+                <form id="testanswersform" name="testquestions" class="mycard bg-secondary">
+
+                    <div id=answer-header class="card-header">Choose an answer</div>
+
+                    <div id="answer-container" class="btn-group btn-group-toggle mycontainer-secondary"
+                        style="padding: 10px;">Oops something went wrong!
+
+                    </div>
+
+                </form>
+
+                <div id="skillsresult-container" class="hide mycard bg-secondary">
+
+                    <div class="card-header">
+
+                        <h3>Skill Evaluation</h3>
+
+                    </div>
+
+                    <div class="card-body card-text organizer">
+
+                        <div class="evallabels">
+
+                            <div class="progresstags" id="labelstrong">Superior</div>
+
+                            <div class="progresstags" id="labelpoor">Inferior</div>
+
+                        </div>
+
+                        <div class='background'>
+
+                            <div class="verticalbar bg-success" style="height: 50%;" id="c0">50%</div>
+
+                            <div class="skilltag"><span class="badge badge-pill badge-secondary">Listening</span></div>
+
+                        </div>
+
+                        <div class='background'>
+
+                            <div class="verticalbar bg-success" style="height: 80%;" id="c1">80%</div>
+
+                            <div class="skilltag"><span class="badge badge-pill badge-secondary">Speaking</span></div>
+
+                        </div>
+
+                        <div class='background'>
+
+                            <div class="verticalbar bg-success" style="height: 20%;" id="c2">20%</div>
+
+                            <div class="skilltag"><span class="badge badge-pill badge-secondary">Reading</span></div>
+
+                        </div>
+
+                        <div class='background'>
+
+                            <div class="verticalbar bg-success" style="height: 50%;" id="c3">50%</div>
+
+                            <div class="skilltag"><span class="badge badge-pill badge-secondary">Writing</span></div>
+
+                        </div>
+
+                        <div class='background'>
+
+                            <div class="verticalbar bg-success" style="height: 80%;" id="c4">80%</div>
+
+                            <div class="skilltag"><span class="badge badge-pill badge-secondary">Vocabulary</span></div>
+
+                        </div>
+
+                        <div class='background'>
+
+                            <div class="verticalbar bg-success" style="height: 20%;" id="c5">20%</div>
+
+                            <div class="skilltag"><span class="badge badge-pill badge-secondary">Grammar</span></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="column3" class="hide">
+
+                <div id="status-container" class="mycard my-3">
+
+                    <div class="card-header">Test Progress</div>
+
+                    <div class="card-body">
+
+                        <ul class="list-group">
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                                Current Stage:
+
+                                <span id=crnt-stage class="badge badge-primary badge-pill">0</span>
+
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                                Current Question:
+
+                                <span id=crnt-qstn class="badge badge-primary badge-pill">0</span>
+
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                                Current Score:
+
+                                <span id=crnt-score class="badge badge-primary badge-pill">0</span>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+
+
+    <input id="start-btn1" type="button" onclick="testDebugger()" class="mybtn hide"
+        value="Skip to the End - troubleshooting">
+
+
+
+    <!-- JS, Popper.js, and jQuery -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        crossorigin="anonymous"></script>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

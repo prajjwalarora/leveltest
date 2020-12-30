@@ -1,0 +1,88 @@
+<head>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Yuri Yarin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Yuri Yarin</title>
+        <link type = "text/css" href = "style.css" rel="stylesheet">
+      
+        <div class="collapse navbar-collapse" id="navbarColor03">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="Leveltest.html">Level Test</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.standpointenglish.com">Standpoint English</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://bootswatch.com/superhero/">Style Source</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="contact.html">Contact Form</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <link type = "text/css" href = "https://www.yuriyarin.com/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Facebook -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0" nonce="XosfFHIo"></script>
+<!-- My site -->
+    <div id = "submission-div" class = "container">
+        <form action="myQuiz.php" method="POST">
+            <div class="form-group">
+                <label for="username">Name</label>
+                <input type="text" class="form-control" id = "username" type="text" required aria-describedby="emailHelp" placeholder="Your name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="useremail">Email address</label>
+                <input type="email" class="form-control" id = "useremail" placeholder="Your email" name="email" required>
+                <small id="emailHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+                <label for="userphone">Phone Number</label>
+                <input type="tel" class="form-control" id="userphone" placeholder="Phone Number" name="phone">
+            </div>    
+            <div class="form-group">
+                <label for="userlocation">Location</label>
+                <input type="text" class="form-control" id="userlocation" placeholder="City, country" name="location">
+            </div>
+            <div class="form-group">
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="moredetails" value="moredetails" checked="" name="details">
+                  <label class="custom-control-label" for="moredetails">I would like more detailed information about my test results</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="teachercontact" value="teachercontact" checked="" name="details">
+                    <label class="custom-control-label" for="teachercontact">I would like to review the result with a teacher</label>
+                  </div>
+              </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+            </div>
+            <p  class = "hide">Test Data Hidden</p><input class = "hide"  id = "testdata" name="testdata" value = "Level_Test001"></p>
+            <div class="btn-group mr-2" role="group" aria-label="Second group">
+                <input class = "btn btn-primary" type="submit" value="Save Test Result">
+                <input class = "btn btn-primary btn-sm" type="reset" value="Clear">
+            </div>
+        </form>
+    </div>
+    
+<!-- Facebook -->
+<div class="fb-page" data-href="https://www.facebook.com/Standpoint-English-101306961575975/shop/?rt=19" data-tabs="" data-width="500" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"></div>
+
+    <!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
