@@ -106,8 +106,11 @@ var questionList = [], A1 = [], A2 = [], B1 = [], B2 = [], C1 = [], C2 = [];
 
 
 if (userLoggedIn) {
+    spinnerContainer.classList.remove('spinner-hide');
     addUserNav()
     startBtnDirect.innerText = "Start test"
+
+    spinnerContainer.classList.add('spinner-hide');
     if (userLoggedIn.email)
         loginBtn.classList.add('d-none');
 
@@ -314,9 +317,9 @@ if (startBtnDirect) {
                 localStorage.clear()
                 await getRegistrationNumber();
                 setTimeout(() => {
-                    spinnerContainer.classList.add('spinner-hide');
                     location.reload();
-                }, 1500)
+                    spinnerContainer.classList.add('spinner-hide');
+                }, 500)
             });
         } else {
             spinnerContainer.classList.remove('spinner-hide');
