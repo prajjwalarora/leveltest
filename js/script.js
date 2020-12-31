@@ -5,7 +5,6 @@ const navbarNav = document.querySelector('.navbar-nav');
 const loginBtn = document.getElementById("login-btn");
 const registerBtn = document.getElementById("register-btn");
 const spinnerContainer = document.getElementById("spinner-container");
-var saveBtn;
 // const startBtn = document.getElementById("start-btn");
 var startBtnDirect = document.getElementById("start-btn-direct");
 var progressBtn = document.getElementById("progress-btn");
@@ -14,6 +13,8 @@ const tempQnData = JSON.parse(localStorage.getItem('TempTestProgress'));
 const passResetForm = document.getElementById("resetForm");
 const submissionForm = document.getElementById("submissionForm");
 const validateEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+var saveBtn;
+var saveBtn2;
 
 
 //declaration of the main containers in the test
@@ -312,6 +313,7 @@ if (startBtnDirect) {
                 spinnerContainer.classList.remove('spinner-hide');
                 localStorage.clear()
                 await getRegistrationNumber();
+                spinnerContainer.classList.add('spinner-hide');
                 location.reload();
             });
         } else {
@@ -908,7 +910,7 @@ function skillResults() {
     userlevelScore = finallevelScore;
 
 
-    document.getElementById("question-header").innerHTML = `<h3>Test Result <button class='btn btn-primary' style='width:fit-content; margin:5px;' ${userLoggedIn.isProfileCompleted ? 'id="save-result-direct"' : 'data-toggle=\"modal\" data-target=\"#submission-modal\"'}>Save Result</button>`
+    document.getElementById("question-header").innerHTML = `<h3>Test Result <button class='btn btn-primary' style='width:fit-content; margin:5px;' ${userLoggedIn.isProfileCompleted ? 'id="save-result-direct"' : 'id="save-result" data-toggle=\"modal\" data-target=\"#submission-modal\"'}>Save Result</button>`
 
 
 
@@ -1000,6 +1002,7 @@ function skillResults() {
     localStorage.setItem("testCompleted", true);
 
     saveBtn = document.getElementById('save-result-direct');
+    saveBtn2 = document.getElementById('save-result')
     if (saveBtn) {
         saveBtn.addEventListener('click', e => {
             spinnerContainer.classList.remove('spinner-hide');
@@ -1042,7 +1045,11 @@ async function saveResult(data) {
             localStorage.removeItem('userAnswers')
             // location.reload()
             spinnerContainer.classList.add('spinner-hide');
-            saveBtn.classList.add('d-none')
+            if (saveBtn)
+                saveBtn.classList.add('d-none')
+            if (saveBtn2)
+                saveBtn2.classList.add('d-none')
+
             if (startBtnDirect) {
                 startBtnDirect.classList.add('d-none');
             }
@@ -1083,7 +1090,7 @@ async function saveUserDetail(data) {
         return newData;
     } catch (err) {
         console.log(err);
-        // alert("Error Occured");
+        alert("Error Occured");
     }
 }
 function saveForm() {
@@ -1154,16 +1161,21 @@ const additionalComments = {
 async function getRegistrationNumber() {
 
     try {
-        const data = await fetch("https://leveltest-backend.herokuapp.com/api/v1/auth/initialRegister")
-        var dataRecived = await data.json()
-        if (dataRecived.status == 'fail') {
-            spinnerContainer.classList.add('spinner-hide');
-            alert(dataRecived.data.message)
-        } else {
-            sessionStorage.setItem('user', JSON.stringify(dataRecived.data.user));
-            spinnerContainer.classList.add('spinner-hide');
+        // const data = await fetch("https://leveltest-backend.herokuapp.com/api/v1/auth/initialRegister")
+        // var dataRecived = await data.json()
+        const registrationNumber = Math.floor((Math.random() * 1000000000) + 1);
+        const data = {
+            isProfileCompleted: false,
+            registrationNumber: registrationNumber
+        };
+        console.log(data);
+        sessionStorage.setItem('user', JSON.stringify(data));
+        // if (dataRecived.status == 'fail') {
+        //     spinnerContainer.classList.add('spinner-hide');
+        //     alert(dataRecived.data.message)
+        // } else {
 
-        }
+        // }
         return;
     } catch (err) {
         spinnerContainer.classList.add('spinner-hide');
