@@ -306,11 +306,11 @@ async function getQuestions() {
 if (startBtnDirect) {
     startBtnDirect.addEventListener('click', e => {
 
-        spinnerContainer.classList.remove('spinner-hide');
         if (!userLoggedIn) {
 
             $('#test-warning-modal').modal('show');
             $('#test-warning-modal').on('hidden.bs.modal', async function () {
+                spinnerContainer.classList.remove('spinner-hide');
                 localStorage.clear()
                 await getRegistrationNumber();
                 setTimeout(() => {
