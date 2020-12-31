@@ -312,6 +312,8 @@ if (startBtnDirect) {
         if (!userLoggedIn) {
 
             $('#test-warning-modal').modal('show');
+            startBtnDirect.innerText = "Loading...";
+            startBtnDirect.disabled = true
             $('#test-warning-modal').on('hidden.bs.modal', async function () {
                 spinnerContainer.classList.remove('spinner-hide');
                 localStorage.clear()
