@@ -16,6 +16,7 @@ const validateEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"
 var saveBtn;
 var saveBtn2;
 
+localStorage.setItem("testCompleted", false);
 
 //declaration of the main containers in the test
 
@@ -338,7 +339,6 @@ async function initiateTest() {
             card.remove();
         })
     }
-    localStorage.setItem("testCompleted", false);
     if (tempQnData) {
         questionNumber = tempQnData.questionNumber;
 
@@ -1083,7 +1083,7 @@ async function saveUserDetail(data) {
                 {
                     name: data.name,
                     email: data.email,
-                    location: data.location,
+                    location: data.userlocation,
                     message: data.message,
                     password: data.password
                 }
@@ -1249,7 +1249,8 @@ submissionForm.addEventListener('submit', async e => {
                         spinnerContainer.classList.add('spinner-hide');
                     }
                     else {
-                        if (localStorage.getItem("testCompleted")) {
+                        if (localStorage.getItem("testCompleted") == true) {
+                            console.log(localStorage.getItem("testCompleted"));
                             alert(result.message);
                             saveResult({ skills, userLevel, userlevelScore })
                             saveAnswer()
