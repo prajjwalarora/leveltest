@@ -6,9 +6,11 @@ const loginBtn = document.getElementById("login-btn");
 const registerBtn = document.getElementById("register-btn");
 const spinnerContainer = document.getElementById("spinner-container");
 // const startBtn = document.getElementById("start-btn");
+
+const startAgainBtn = document.getElementById("clear-test-data");
 var startBtnDirect = document.getElementById("start-btn-direct");
 var progressBtn = document.getElementById("progress-btn");
-var userLoggedIn = JSON.parse(sessionStorage.getItem('user'));
+var userLoggedIn = JSON.parse(localStorage.getItem('user'));
 const tempQnData = JSON.parse(localStorage.getItem('TempTestProgress'));
 const passResetForm = document.getElementById("resetForm");
 const submissionForm = document.getElementById("submissionForm");
@@ -98,7 +100,7 @@ var answerList = ""
 var finalComment = ""
 
 var qnId;
-// var userLoggedIn = JSON.parse(sessionStorage.getItem('user'));
+// var userLoggedIn = JSON.parse(localStorage.getItem('user'));
 // var startBtnDirect = document.getElementById("start-btn-direct");
 var userAnswers = [];
 var questionList = [], A1 = [], A2 = [], B1 = [], B2 = [], C1 = [], C2 = [];
@@ -123,7 +125,12 @@ if (userLoggedIn) {
     // startBtn.classList.add('d-none');
     startBtnDirect.classList.remove('d-none')
     if (tempQnData) {
-        initiateTest();
+        const continueBtn = document.getElementById("continue-btn");
+        continueBtn.classList.remove('d-none');
+        startBtnDirect.classList.add('d-none')
+        continueBtn.addEventListener('click', e => {
+            initiateTest();
+        })
     }
 
 }
@@ -133,7 +140,7 @@ function addUserNav() {
         const newHTML = `<i class="las la-user-circle text-white" style="font-size: 30px;"></i> <p class="text-white my-auto mr-1">${userLoggedIn ? userLoggedIn.name : "Anonymous"}  |</p> <a class="text-white" id="logout-btn" style="cursor:pointer">LogOut</a>`
         navbarNav.insertAdjacentHTML('afterend', newHTML)
         document.getElementById('logout-btn').addEventListener('click', e => {
-            sessionStorage.clear();
+            localStorage.clear();
             localStorage.clear()
             location.reload();
         })
@@ -164,7 +171,7 @@ loginForm.addEventListener('submit', async e => {
                     alert(dataRecived.data.message)
                     spinnerContainer.classList.add('spinner-hide');
                 } else {
-                    sessionStorage.setItem('user', JSON.stringify(dataRecived.data.user))
+                    localStorage.setItem('user', JSON.stringify(dataRecived.data.user))
                     alert('login Success')
                     spinnerContainer.classList.add('spinner-hide');
                     location.reload();
@@ -225,7 +232,7 @@ if (progressBtn) {
     progressBtn.addEventListener('click', async e => {
         try {
             spinnerContainer.classList.remove('spinner-hide');
-            const result = await fetch(`https://leveltest-backend.herokuapp.com/api/v1/progress/${JSON.parse(sessionStorage.getItem('user')).registrationNumber}`);
+            const result = await fetch(`https://leveltest-backend.herokuapp.com/api/v1/progress/${JSON.parse(localStorage.getItem('user')).registrationNumber}`);
             const data = await result.json();
             const mainContainer = document.getElementById("maintestcontainer");
             if (data.length > 0) {
@@ -333,12 +340,15 @@ if (startBtnDirect) {
 }
 
 async function initiateTest() {
+
+    spinnerContainer.classList.add('spinner-hide');
     const progressCard = document.querySelectorAll(".progress-card");
     if (progressCard.length > 0) {
         progressCard.forEach(card => {
             card.remove();
         })
     }
+    startAgainBtn.classList.remove('d-none');
     if (tempQnData) {
         questionNumber = tempQnData.questionNumber;
 
@@ -360,15 +370,14 @@ async function initiateTest() {
     //getUserInfo () //DISABLED!!! if the condition in getUserInfo>requiredData is not fulfilled, the code stops here.
 
     if (tempQnData) {
-        const data = `<a id="clear-test-data" class="text-white ml-1" style="cursor:pointer;">| Start Again</a>`
-        document.querySelector(".navbar-collapse").insertAdjacentHTML('beforeend', data)
+        startAgainBtn.classList.remove('d-none');
     }
 
-    const startAgainBtn = document.getElementById("clear-test-data");
     if (startAgainBtn)
         startAgainBtn.addEventListener('click', e => {
             localStorage.removeItem('TempTestProgress');
             localStorage.removeItem('userAnswers')
+            localStorage.removeItem('user')
             location.reload();
         })
     //jumbotron reduction code
@@ -1029,7 +1038,7 @@ async function saveResult(data) {
             method: "POST",
             body: JSON.stringify(
                 {
-                    userRegistrationId: JSON.parse(sessionStorage.getItem('user')).registrationNumber,
+                    userRegistrationId: JSON.parse(localStorage.getItem('user')).registrationNumber,
                     level: data.userLevel,
                     levelScore: data.userlevelScore,
                     listeningSkill: data.skills[0],
@@ -1047,7 +1056,7 @@ async function saveResult(data) {
         const dataRecived = await result.json();
         if (dataRecived.status == "success") {
             alert('Result Stored Successfully!');
-            // sessionStorage.clear();
+            // localStorage.clear();
             localStorage.removeItem("TempTestProgress");
             localStorage.removeItem('userAnswers')
             // location.reload()
@@ -1074,7 +1083,7 @@ async function saveResult(data) {
 
 async function saveUserDetail(data) {
     try {
-        const url = "https://leveltest-backend.herokuapp.com/api/v1/users/" + JSON.parse(sessionStorage.getItem('user')).registrationNumber;
+        const url = "https://leveltest-backend.herokuapp.com/api/v1/users/" + JSON.parse(localStorage.getItem('user')).registrationNumber;
         console.log(url);
         const result = await fetch(url, {
             method: "POST",
@@ -1093,7 +1102,7 @@ async function saveUserDetail(data) {
             }
         })
         const newData = await result.json();
-        sessionStorage.setItem('user', JSON.stringify(newData.data));
+        localStorage.setItem('user', JSON.stringify(newData.data));
         return newData;
     } catch (err) {
         console.log(err);
@@ -1176,7 +1185,7 @@ async function getRegistrationNumber() {
             registrationNumber: registrationNumber
         };
         console.log(data);
-        sessionStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem('user', JSON.stringify(data));
         // if (dataRecived.status == 'fail') {
         //     spinnerContainer.classList.add('spinner-hide');
         //     alert(dataRecived.data.message)
@@ -1229,7 +1238,7 @@ submissionForm.addEventListener('submit', async e => {
         const password = document.getElementById("userPasswordSubmi").value;
         const passwordConfirm = document.getElementById("userPasswordConfirmSubmi").value;
         const message = document.getElementById("messageSubmi").value;
-        const user = JSON.parse(sessionStorage.getItem('user'));
+        const user = JSON.parse(localStorage.getItem('user'));
         if (password.length < 8) {
             alert("password is too short");
             spinnerContainer.classList.add('spinner-hide');
@@ -1249,7 +1258,7 @@ submissionForm.addEventListener('submit', async e => {
                         spinnerContainer.classList.add('spinner-hide');
                     }
                     else {
-                        if (localStorage.getItem("testCompleted") == true) {
+                        if (JSON.parse(localStorage.getItem("testCompleted")) == true) {
                             console.log(localStorage.getItem("testCompleted"));
                             alert(result.message);
                             saveResult({ skills, userLevel, userlevelScore })
